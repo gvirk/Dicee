@@ -10,10 +10,14 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var randomDiceIndex:Int = 0
+    var randomDice1 : Int = 0
+    var randomDice2 : Int = 0
     
-    @IBOutlet weak var diceImageView1: UIImageView!
-    @IBOutlet weak var diceImageView2: UIImageView!
+    let diceArray = ["dice1", "dice2", "dice3", "dice4", "dice5", "dice6"]
+    
+    @IBOutlet weak var diceImage1: UIImageView!
+    @IBOutlet weak var diceImage2: UIImageView!
+    
     
     
     override func viewDidLoad() {
@@ -25,9 +29,16 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     
-    @IBAction func rollButtonPressed(_ sender: UIButton) {
+    @IBAction func rollButton(_ sender: UIButton) {
+        randomDice1 = Int(arc4random_uniform(6))
+        randomDice2 = Int(arc4random_uniform(6))
+       // print(randomDice1)
+        
+        diceImage1.image = UIImage(named: diceArray[randomDice1])
+        diceImage2.image = UIImage(named: diceArray[randomDice2])
     }
-    
+
 }
 
